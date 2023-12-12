@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t sangtran/docker-react -f Dockerfile.dev .
+  
+script:
+  - docker run -e CI=true sangtran/docker-react npm run test -- --coverage
